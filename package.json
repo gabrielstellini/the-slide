@@ -1,0 +1,15 @@
+{
+  "name": "the-slide",
+  "version": "1.0.0",
+  "description": "Project for Web Development module.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@codelab.mdx.ac.uk:GS703/the-slide.git"
+  },
+  "author": "Gabriel Stellini",
+  "license": "MIT"
+}
