@@ -1,3 +1,49 @@
-<p>
-  register-form works!
-</p>
+<div class="container">
+    <div class="row vertical-offset-100">
+        <form #loginForm="ngForm" class="register-form">
+
+            <div class="form-group image-div">
+                <img src="../../../assets/logo.png">
+            </div>
+
+            <div>
+
+                <div class="form-group email-group">
+                    <label for="username">Username:</label>
+                    <input class="form-control" name="username" id="username" type="text" [(ngModel)]="username" required>
+                </div>
+
+                <div class="form-group email-group">
+                    <label for="email">Email Address:</label>
+                    <input class="form-control" name="email" id="email" type="text" [(ngModel)]="email" required>
+                </div>
+
+                <div class="form-group password-group">
+                    <label for="password">Password:</label>
+                    <input class="form-control" name="password" type="password" id="password" [(ngModel)]="password" required>
+                </div>
+
+                <div class="form-group password-group">
+                    <label for="verify-password">Verify Password:</label>
+                    <input class="form-control" name="verify-password" type="verify-password" id="verify-password" [(ngModel)]="verifyPassword" required>
+                </div>
+
+                <div class="form-group login-btns">
+                    <button class="form-control" type="submit" (submit)="manualRegister(loginForm)">Register</button>
+
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-danger" formnovalidate (submit)="googleRegister()">Register With Google</button>
+                        <button type="button" class="btn btn-primary" formnovalidate (submit)="facebookRegister()">Register With Facebook</button>
+                    </div>
+
+
+                </div>
+                <div class="form-group">
+                    <a routerLink="/login">Return to login</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+</div>

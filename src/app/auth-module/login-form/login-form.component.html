@@ -1,17 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Log in</title>
-</head>
-<body>
-
 <div class="container">
     <div class="row vertical-offset-100">
-        <form #loginForm="ngform" class="login-form">
+        <form #loginForm="ngForm" class="login-form">
 
             <div class="form-group image-div">
                 <img src="../../../assets/logo.png">
@@ -19,27 +8,22 @@
 
             <div>
                 <div class="form-group email-group">
-                    <input class="form-control" name="email" type="text" [(ngModel)]="email" >
+                    <label for="email">Email Address:</label>
+                    <input class="form-control" name="email" id="email" type="text" [(ngModel)]="email" required>
                 </div>
 
                 <div class="form-group password-group">
-                    <input class="form-control" name="password" type="password" [(ngModel)]="password">
+                    <label for="password">Email Address:</label>
+                    <input class="form-control" name="password" type="password" id="password" [(ngModel)]="password" required>
                 </div>
 
                 <div class="form-group login-btns">
-                    <button class="form-control" type="submit" onsubmit=[("manualLogin(loginForm)")]>Login</button>
-                    <button [(routerLink)]="['./register']" class="form-control" type="submit">Register</button>
-                </div>
-
-                <div class="form-group alt-login">
-                    <button class="form-control" onsubmit=[("googleLogin()")]>Login With Google</button>
-                    <button class="form-control" onsubmit=[("facebookLogin()")]>Login With Facebook</button>
+                    <button class="form-control" type="submit" (submit)="manualLogin(loginForm)">Login</button>
+                    <button routerLink="/register" class="form-control" type="submit">Register</button>
+                    <button class="form-control" (submit)="googleLogin()">Login With Google</button>
+                    <button class="form-control" (submit)="facebookLogin()">Login With Facebook</button>
                 </div>
             </div>
         </form>
     </div>
-
 </div>
-
-</body>
-</html>
