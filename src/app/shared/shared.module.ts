@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import {FacebookAuthService} from "../auth-module/services/facebook-auth.service";
-import {GoogleAuthService} from "../auth-module/services/google-auth.service";
-import {CustomAuthService} from "../auth-module/services/custom-auth.service";
+import {AppStateService} from "./app-state.service";
+import {NotifyUserService} from "./notify-user.service";
 
 
 @NgModule({
@@ -11,9 +9,8 @@ import {CustomAuthService} from "../auth-module/services/custom-auth.service";
         CommonModule
     ],
     providers: [
-        CustomAuthService,
-        FacebookAuthService,
-        GoogleAuthService
+        AppStateService,
+        NotifyUserService
     ],
     declarations: []
 })
