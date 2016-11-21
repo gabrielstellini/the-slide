@@ -9,18 +9,18 @@
             <div>
                 <div class="form-group email-group">
                     <label for="email">Email Address:</label>
-                    <input class="form-control" name="email" id="email" type="text" [(ngModel)]="email" required>
+                    <input class="form-control" name="email" id="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})" type="text" [(ngModel)]="email" required>
                 </div>
 
                 <div class="form-group password-group">
-                    <label for="password">Email Address:</label>
+                    <label for="password">Password:</label>
                     <input class="form-control" name="password" type="password" id="password" [(ngModel)]="password" required>
                 </div>
 
                 <div class="form-group login-btns">
-                    <button class="form-control" type="submit" (submit)="manualLogin(loginForm)">Login</button>
+                    <button class="form-control" [disabled]="!loginForm.valid" type="submit" (submit)="manualLogin(loginForm)">Login</button>
                     <button routerLink="/register" class="form-control" type="submit">Register</button>
-                    <button class="form-control" (submit)="googleLogin()">Login With Google</button>
+                    <button class="form-control" (click)="googleLogin()">Login With Google</button>
                     <button class="form-control" (submit)="facebookLogin()">Login With Facebook</button>
                 </div>
             </div>
