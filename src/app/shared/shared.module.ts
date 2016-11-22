@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AppStateService} from "./app-state.service";
-import {NotifyUserService} from "./notify-user.service";
+import { NotificationComponent } from './notification/notification/notification.component';
+import {NotifyService} from "./api/notify.service";
 
 
 @NgModule({
@@ -10,8 +11,9 @@ import {NotifyUserService} from "./notify-user.service";
     ],
     providers: [
         AppStateService,
-        NotifyUserService
+        NotifyService
     ],
-    declarations: []
+    declarations: [NotificationComponent],
+    exports: [NotificationComponent]
 })
 export class SharedModule { }

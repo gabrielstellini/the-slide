@@ -10,6 +10,7 @@ import {EqualValidator} from "./auth-module/register-form/equal-validator";
 import {authRoutes} from "./auth-module/auth.routes";
 import {RouterModule} from "@angular/router";
 import {AuthModule} from "./auth-module/auth-module";
+import {SharedModule} from "./shared/shared.module";
 // import { SharedComponent } from './shared/shared.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import {AuthModule} from "./auth-module/auth-module";
         BrowserModule,
         FormsModule,
         HttpModule,
+        SharedModule,
         RouterModule.forRoot(authRoutes)
     ],
     bootstrap: [AppComponent]

@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="form-group login-btns">
-                    <button class="form-control" [disabled]="!loginForm.valid" type="submit" (submit)="manualLogin(loginForm)">Login</button>
+                    <button class="form-control" [disabled]="!loginForm.valid" type="submit" (click)="manualLogin(loginForm)">Login</button>
                     <button routerLink="/register" class="form-control" type="submit">Register</button>
                     <button class="form-control" (click)="googleLogin()">Login With Google</button>
                     <button class="form-control" (submit)="facebookLogin()">Login With Facebook</button>
