@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, style, animate, transition, trigger} from '@angular/core';
 import {NotifyService} from "../../api/notify.service";
 import {NotificationData, NotificationTypes} from "./notification.model";
 
@@ -6,40 +6,32 @@ import {NotificationData, NotificationTypes} from "./notification.model";
   selector: 'app-notification',
   templateUrl: './notification.component.html',
   styleUrls: ['./notification.component.scss']
+
 })
+
 export class NotificationComponent implements OnInit {
 
   message: string;
   type: string;
-  demo:string;
+  toggleHidden: boolean = true;
 
-  /**
-   * Types of alerts:
-   * info, warning, danger
-   *
-   * It is recommended for message to have <strong> and <em> tags within it
-   *
-   * @param notifyService
-   * @param notificationDetails
-   */
-
-  constructor( private notifyService : NotifyService) {
-
-  }
+  constructor(private notifyService: NotifyService) {}
 
   ngOnInit() {
     this.notifyService.subscribe(this);
   }
 
-  showNotification(notificationDetails: NotificationData){
+  showNotification(notificationDetails: NotificationData) {
+
     this.message = notificationDetails.message;
-    // this.type = notificationDetails.type.toString().toLowerCase();
-    // this.demo = notificationDetails.type.valueOf();
     this.type = NotificationTypes[notificationDetails.type];
     this.type = this.type.toLowerCase();
     this.notifyService.subscribe(this);
+    this.toggleHidden = false;
+    this.fade();
   }
 
-
-
+  fade() {
+    window.setTimeout(() => this.toggleHidden = true, 2000);
+  }
 }
