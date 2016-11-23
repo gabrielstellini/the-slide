@@ -24,22 +24,11 @@ export class LoginFormComponent implements OnInit {
   }
 
   manualLogin(loginDetails){
-   this.notificationService.notify( <NotificationData> {
-     message: "Hello world",
-     type: NotificationTypes.SUCCESS
-   });
 
-    this.notificationService.notify( <NotificationData> {
-      message: "Hello world2",
-      type: NotificationTypes.INFO
-    });
+    let email = loginDetails.value.email;
+    let password = loginDetails.value.password;
 
-
-    // let email = loginDetails.email;
-    // let password = loginDetails.password;
-    //
-    // this.customAuthService.attemptLogin(email,password);
-
+    this.customAuthService.attemptLogin(email,password);
   }
 
   googleLogin(){
