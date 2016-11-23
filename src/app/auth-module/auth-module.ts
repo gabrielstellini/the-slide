@@ -23,7 +23,7 @@ import {SharedModule} from "../shared/shared.module";
     providers: [
         CustomAuthService,
         FacebookAuthService,
-        GoogleAuthService,
+        GoogleAuthService
     ]
 })
 export class AuthModule { }
