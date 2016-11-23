@@ -10,13 +10,13 @@
 
                 <div class="form-group email-group">
                     <label for="username">Username:</label>
-                    <input class="form-control" type="text" name="username" id="username" [(ngModel)]="user.username" required minlength="5" maxlength="8" #username="ngModel">
+                    <input class="form-control" type="text" name="username" id="username" required minlength="5" maxlength="8" [(ngModel)]="user.username" #username="ngModel">
                     <small [hidden]="username.valid || (username.pristine && !regiserForm.submitted)"> Username is required (minimum of 5 characters, maximum of 8).</small>
                 </div>
 
                 <div class="form-group email-group">
                     <label for="email">Email Address:</label>
-                    <input class="form-control" type="email" name="email" id="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="user.email"  #email="ngModel" required>
+                    <input class="form-control" type="text" name="email" id="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="user.email"  #email="ngModel" required>
                     <small [hidden]="email.valid || (email.pristine && !regiserForm.submitted)">Email is required and format should be <i>example@example.example</i>.</small>
                 </div>
 
@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="form-group login-btns">
-                    <button class="form-control" [disabled]="!regiserForm.valid" type="submit" (click)="manualRegister(user)">Register</button>
+                    <button class="form-control" [disabled]="!regiserForm.valid" type="submit" (click)="manualRegister(regiserForm)">Register</button>
 
                     <div class="btn-group">
                         <button type="button" class="btn btn-danger" formnovalidate (click)="googleRegister()">Register With Google</button>
