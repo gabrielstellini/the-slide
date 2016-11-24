@@ -10,11 +10,15 @@ import {RouterModule} from "@angular/router";
 import {AuthModule} from "./auth-module/auth-module";
 import {SharedModule} from "./shared/shared.module";
 import { InstructionsComponent } from './home-module/instructions/instructions.component';
+import { HomeComponent } from './home/home.component';
+import { HomeModuleComponent } from './home-module/home-module.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        InstructionsComponent
+        InstructionsComponent,
+        HomeComponent,
+        HomeModuleComponent
     ],
     imports: [
         AuthModule,
