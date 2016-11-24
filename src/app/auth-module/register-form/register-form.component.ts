@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../../shared/User";
 import {CustomAuthService} from "../services/custom-auth.service";
-import {EqualValidator} from "./equal-validator";
 import {NotifyService} from "../../shared/api/notify.service";
 import {NotificationData, NotificationTypes} from "../../shared/notification/notification/notification.model";
-import {Form} from "@angular/forms";
 
 @Component({
   selector: 'app-register-form',
@@ -12,14 +10,14 @@ import {Form} from "@angular/forms";
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
-
   public user: User = <User> {};
-
 
   constructor(
       private registerAuth: CustomAuthService,
       private notificationService:NotifyService
   ) {}
+
+
 
   ngOnInit() {
   }
@@ -36,9 +34,5 @@ export class RegisterFormComponent implements OnInit {
       message: "Account created! :)",
       type: NotificationTypes.SUCCESS
     });
-
   }
-
-
-
 }

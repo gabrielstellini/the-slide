@@ -1,5 +1,3 @@
-// equal-validator.directive.ts
-
 import { Directive, forwardRef, Attribute } from '@angular/core';
 import { Validator, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
@@ -20,11 +18,10 @@ export class EqualValidator implements Validator {
     }
 
     validate(c: AbstractControl): { [key: string]: any } {
-        debugger;
         // self value
         let v = c.value;
 
-        // control value
+        // control vlaue
         let e = c.root.get(this.validateEqual);
 
         // value not equal

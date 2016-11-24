@@ -5,7 +5,6 @@ export interface NotificationData {
 
 export enum NotificationTypes {
     INFO,
-    WARNING,
     DANGER,
     SUCCESS
 }

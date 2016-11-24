@@ -1,3 +1,16 @@
-<div [hidden]="toggleHidden" class="notification alert alert-{{type}}">
-  {{message}}
+<!--<div [class.notification-hidden]="isHidden"-->
+<!--[class.notification-shown]="!isHidden"-->
+<!--class="notification alert alert-{{type}}">-->
+<!--{{message}}-->
+<!--</div>-->
+
+<div
+        class="notification alert"
+        [class.notification-hidden]="isHidden"
+        [class.notification-shown]="!isHidden"
+        [class.alert-info]="isInfo"
+        [class.alert-danger]="isDanger"
+        [class.alert-success]="isSuccess"
+>
+     {{message}}
 </div>

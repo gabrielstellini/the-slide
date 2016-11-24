@@ -1,0 +1,20 @@
+.notification {
+  transition: all 600ms ease !important;
+  position: absolute;
+  width:100%;
+  //height: 80px;
+
+  //padding-top: 30px;
+  //font-size: 18px;
+  //text-align:center;
+}
+
+.notification-shown {
+  top: 0px !important;
+  //color:blue !important;
+}
+
+.notification-hidden {
+  top: -80px !important;
+  //color:pink !important;
+}

@@ -20,20 +20,23 @@
                     <small [hidden]="email.valid || (email.pristine && !regiserForm.submitted)">Email is required and format should be <i>example@example.example</i>.</small>
                 </div>
 
+                <div  ngControlGroup="passwordsGroup">
                 <div class="form-group password-group">
                     <label for="password">Password:</label>
-                    <input class="form-control" name="password" type="password" id="password" validateEqual="verify-password" reverse="true" [(ngModel)]="user.password" required>
+                    <input class="form-control" id="password" type="password" name="password" [(ngModel)]="user.password" #password="ngModel" validateEqual="confirmPassword" reverse="true" required>
+                    <!--<input class="form-control" name="password" type="password" id="password" validateEqual="registerForm.verify-password" reverse="true" [(ngModel)]="user.password" required>-->
                 </div>
 
                 <div class="form-group password-group">
-                    <label for="verify-password">Verify Password:</label>
-                    <input class="form-control" name="verify-password" type="verify-password" id="verify-password" validateEqual="password" [(ngModel)]="user.verifyPassword" required>
+                    <label for="confirmPassword">Verify Password:</label>
+                    <input class="form-control" id="confirmPassword" type="password" name="confirmPassword" [(ngModel)]="user.confirmPassword" validateEqual="password" #confirmPassword="ngModel" required>
                 </div>
 
-                <div class="form-group login-btns">
+                </div>
+                <div class="form-group register-btns">
                     <button class="form-control" [disabled]="!regiserForm.valid" type="submit" (click)="manualRegister(regiserForm)">Register</button>
 
-                    <div class="btn-group">
+                    <div class="btn-group form-inline">
                         <button type="button" class="btn btn-danger" formnovalidate (click)="googleRegister()">Register With Google</button>
                         <button type="button" class="btn btn-primary" formnovalidate (click)="facebookRegister()">Register With Facebook</button>
                     </div>

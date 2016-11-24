@@ -8,12 +8,14 @@ import {GoogleAuthService} from "./services/google-auth.service";
 import {RouterModule} from "@angular/router";
 import {authRoutes} from "./auth.routes";
 import {SharedModule} from "../shared/shared.module";
+import {EqualValidator} from "./register-form/equal-validator";
 
 
 @NgModule({
     declarations: [
         LoginFormComponent,
-        RegisterFormComponent
+        RegisterFormComponent,
+        EqualValidator
     ],
     imports: [
         FormsModule,

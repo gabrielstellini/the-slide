@@ -1,37 +1,60 @@
-import {Component, OnInit, style, animate, transition, trigger} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NotifyService} from "../../api/notify.service";
 import {NotificationData, NotificationTypes} from "./notification.model";
 
 @Component({
-  selector: 'app-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss']
+    selector: 'app-notification',
+    templateUrl: './notification.component.html',
+    styleUrls: ['./notification.component.scss']
 
 })
 
 export class NotificationComponent implements OnInit {
 
-  message: string;
-  type: string;
-  toggleHidden: boolean = true;
+    message: string;
+    isHidden: boolean = true;
 
-  constructor(private notifyService: NotifyService) {}
+    isInfo: boolean = false;
+    isDanger: boolean = false;
+    isSuccess: boolean = false;
 
-  ngOnInit() {
-    this.notifyService.subscribe(this);
-  }
+    constructor(private notifyService: NotifyService) { }
 
-  showNotification(notificationDetails: NotificationData) {
+    ngOnInit() {
+        this.notifyService.subscribe(this);
+    }
 
-    this.message = notificationDetails.message;
-    this.type = NotificationTypes[notificationDetails.type];
-    this.type = this.type.toLowerCase();
-    this.notifyService.subscribe(this);
-    this.toggleHidden = false;
-    this.fade();
-  }
+    showNotification(notificationDetails: NotificationData) {
 
-  fade() {
-    window.setTimeout(() => this.toggleHidden = true, 2000);
-  }
+        this.message = notificationDetails.message;
+        this.setMessageType(notificationDetails.type);
+        this.notifyService.subscribe(this);
+        this.isHidden = false;
+        this.fade();
+    }
+
+    setMessageType(messageType:NotificationTypes){
+        this.isInfo = false;
+        this.isDanger = false;
+        this.isSuccess = false;
+
+        debugger;
+
+        if(messageType === 0){
+            //info
+            this.isInfo = true;
+        }
+        else if(messageType === 1){
+            //danger
+            this.isDanger = true;
+        }
+        else if(messageType === 2){
+            //success
+            this.isSuccess = true;
+        }
+    }
+
+    fade() {
+        window.setTimeout(() => this.isHidden = true, 3000);
+    }
 }
