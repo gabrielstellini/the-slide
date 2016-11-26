@@ -4,21 +4,22 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {EqualValidator} from "./auth-module/register-form/equal-validator";
 import {authRoutes} from "./auth-module/auth.routes";
 import {RouterModule} from "@angular/router";
 import {AuthModule} from "./auth-module/auth-module";
 import {SharedModule} from "./shared/shared.module";
 import { InstructionsComponent } from './home-module/instructions/instructions.component';
-import { HomeComponent } from './home/home.component';
+
 import { HomeModuleComponent } from './home-module/home-module.component';
+import { MobileAppComponent } from './mobile-app/mobile-app.component';
+import {HomeModuleModule} from "./home-module/home-module.module";
+import {MobileAppModule} from "./mobile-app/mobile-app.module";
+import {homeRoutes} from "./home-module/home.routes";
 
 @NgModule({
     declarations: [
         AppComponent,
-        InstructionsComponent,
-        HomeComponent,
-        HomeModuleComponent
+        MobileAppComponent
     ],
     imports: [
         AuthModule,
@@ -26,7 +27,10 @@ import { HomeModuleComponent } from './home-module/home-module.component';
         FormsModule,
         HttpModule,
         SharedModule,
-        RouterModule.forRoot(authRoutes)
+        HomeModuleModule,
+        MobileAppModule,
+        RouterModule.forRoot(authRoutes),
+        RouterModule.forRoot(homeRoutes)
     ],
     bootstrap: [AppComponent]
 })
