@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-instructions',
-  templateUrl: './instructions.component.html',
-  styleUrls: ['./instructions.component.scss']
+    selector: 'app-instructions',
+    templateUrl: './instructions.component.html',
+    styleUrls: ['./instructions.component.scss']
 })
 export class InstructionsComponent implements OnInit {
 
-  constructor() { }
+    public address = "http://your pc ip address/mobile/mobile-page.html";
 
-  ngOnInit() {
-  }
+    constructor() { }
+
+    ngOnInit() {
+
+    }
+
+
 
 }

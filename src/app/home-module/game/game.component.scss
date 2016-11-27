@@ -1,0 +1,33 @@
+
+
+#game{
+  width: 400px;
+  //margin: 0 auto;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+}
+
+#see-saw{
+  width: 400px;
+  height: 20px;
+  margin-bottom: -20px;
+  background-color: gray;
+  transform-origin: 51% 100%;
+  transition: all 200ms ease !important;
+}
+
+.circle{
+  border: 2px solid #111111;
+  padding: 10px 40px;
+  background: #dddddd;
+  width: 1px;
+  height: 85px;
+  border-radius: 100px;
+  transform: scale(0.5, 0.5);
+  margin: 0 auto;
+}
