@@ -1,8 +1,5 @@
-
-
 #game{
   width: 400px;
-  //margin: 0 auto;
 
   position: absolute;
   left: 50%;
@@ -11,12 +8,21 @@
   transform: translate(-50%, -50%);
 
 }
-
+//
 #see-saw{
   width: 400px;
   height: 20px;
   margin-bottom: -20px;
   background-color: gray;
+  transform-origin: 51% 100%;
+  transition: all 200ms ease !important;
+}
+
+#box{
+  width: 20px;
+  height: 20px;
+  background-color: darkblue;
+  position: absolute;
   transform-origin: 51% 100%;
   transition: all 200ms ease !important;
 }
@@ -30,4 +36,52 @@
   border-radius: 100px;
   transform: scale(0.5, 0.5);
   margin: 0 auto;
+}
+body, html {
+  background: #eee;
+  position: relative;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#a {
+  background: #777;
+  left: 50px;
+  top: 50px;
+  transform: rotateZ(10deg);
+}
+
+#b {
+  background: #bbb;
+  left: 170px;
+  top: 60px;
+
+}
+
+#see-saw div, #box div {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  visibility: hidden;
+}
+
+#a:hover div, #b:hover div {
+  visibility: visible;
+  outline: solid 1px blue;
+}
+
+.left-top { left: 0; top: 0; background: yellow; }
+.right-top {right: 0; top: 0; background: red; }
+.right-bottom { right: 0; bottom: 0; background:blue;}
+.left-bottom { left: 0; bottom: 0; background: lime; }
+
+
+#dotline {
+  width: 3px;
+  height: 3px;
+  background: orange;
+  position: absolute;
+  z-index: 300;
+
 }

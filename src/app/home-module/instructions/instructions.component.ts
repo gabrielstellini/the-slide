@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructionsComponent implements OnInit {
 
-    public address = "http://your pc ip address/mobile/mobile-page.html";
+    public address = "http://[your pc ip address]/mobile/mobile-page.html";
 
     constructor() { }
 
     ngOnInit() {
-
+        this.getIP();
     }
 
-
+    getIP() {
+    }
 
 }

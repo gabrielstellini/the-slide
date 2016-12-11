@@ -1,6 +1,17 @@
 <app-nav-bar></app-nav-bar>
 
 <div id="game">
-    <div id="see-saw" [style.transform]="getRotationStyle()" ></div>
+    <div id="see-saw" [style.transform]="getRotationStyle()" >
+        <div class="left-top" rel="yellow"></div>
+        <div class="right-top" rel="red"></div>
+        <div class="right-bottom" rel="blue"></div>
+        <div class="left-bottom" rel="lime"></div>
+    </div>
     <div class="circle"></div>
+    <div id="box" [style.top] ="getBoxStyle()" [style.transform]="getRotationStyle()">
+        <div class="left-top" rel="yellow"></div>
+        <div class="right-top" rel="red"></div>
+        <div class="right-bottom" rel="blue"></div>
+        <div class="left-bottom" rel="lime"></div>
+    </div>
 </div>

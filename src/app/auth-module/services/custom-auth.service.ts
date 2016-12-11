@@ -4,13 +4,15 @@ import {environment} from "../../../environments/environment";
 import {User} from "../../shared/User";
 import {NotifyService} from "../../shared/api/notify.service";
 import {NotificationData, NotificationTypes} from "../../shared/notification/notification/notification.model";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class CustomAuthService{
 
     constructor(
         private http: Http,
-        private notifyService: NotifyService
+        private notifyService: NotifyService,
+        private router: Router
     ) { }
 
     attemptLogin(email, password){
@@ -29,6 +31,7 @@ export class CustomAuthService{
                 } else {
                     this.login(user);
                     // return("success", "Welcome back :)");
+                    this.router.navigate(['/home']);
                     this.notifyService.notify(<NotificationData> {
                         message: "Welcome back :)",
                         type: NotificationTypes.SUCCESS
@@ -45,12 +48,14 @@ export class CustomAuthService{
 
     login(user: User) {
         this.setCurrentUser(user.ID);
+
         return this.http.post(environment.BASE_URL + 'game',
             {
                 // userData : user
                 userData: JSON.stringify(user)
             }
         ).subscribe();
+
     }
 
 
