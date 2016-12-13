@@ -27,7 +27,6 @@ export class LoginFormComponent implements OnInit {
 
     let email = loginDetails.value.email;
     let password = loginDetails.value.password;
-
     this.customAuthService.attemptLogin(email,password);
   }
 
