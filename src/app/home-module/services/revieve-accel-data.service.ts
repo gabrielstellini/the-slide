@@ -1,24 +1,29 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from "@angular/http";
+import 'rxjs/Rx';
 import {environment} from "../../../environments/environment";
+import {Observable} from "rxjs";
+
+
+
+interface Coordinates {
+    x: number,
+    y: number,
+    z: number
+}
 
 @Injectable()
 export class RevieveAccelDataService {
 
-    public coordinates;
+    constructor(private http: Http) { }
 
-    constructor(private http: Http) {
-        this.getData();
+
+    getData(): Observable<Coordinates>{
+        return this.http.get('http://localhost/api/accelerometer_request.php')
+            .map(response => {
+                return <Coordinates> response.json()
+            });
     }
 
-
-    getData(){
-        this.http.get('http://localhost/api/accelerometer_request.php').subscribe(res => {this.setCoordinates(res.json())});
-        return this.coordinates;
-    }
-
-    setCoordinates(data){
-        this.coordinates = data;
-    }
 }
 
