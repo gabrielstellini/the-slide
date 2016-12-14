@@ -16,8 +16,7 @@ export class CustomAuthService{
     ) { }
 
     attemptLogin(email, password){
-        debugger;
-        let iterations = this.getLastUserID();
+        let iterations = CustomAuthService.getLastUserID();
 
         //No registered users
         if(iterations === 0){
@@ -28,7 +27,7 @@ export class CustomAuthService{
         }
 
 
-        for (var i = 0; i < iterations; i++) {
+        for (let i = 0; i < iterations; i++) {
             let user = this.getUser(i);
             if (user.email === email) {
                 if (user.password !== password) {
@@ -56,7 +55,7 @@ export class CustomAuthService{
     }
 
     login(user: User) {
-        this.setCurrentUser(user.ID);
+        CustomAuthService.setCurrentUser(user.ID);
 
         return this.http.post(environment.BASE_URL + 'game',
             {
@@ -69,17 +68,17 @@ export class CustomAuthService{
 
 
     register(username, email,password){
-        this.saveUser(this.getLastUserID(),username,email,password);
+        this.saveUser(CustomAuthService.getLastUserID(),username,email,password);
         this.incrementLastUserID();
     }
 
 
     saveUser(id, username, email, password){
 
-        var date = new Date();
-        var dateNow = date.getTime();
+        let date = new Date();
+        let dateNow = date.getTime();
 
-        var JSONUser = {
+        let JSONUser = {
             'username': username,
             'email': email,
             'password': password,
@@ -89,8 +88,8 @@ export class CustomAuthService{
         localStorage.setItem(id, JSON.stringify(JSONUser));
     }
 
-    getLastUserID() {
-        var retrievedObject = localStorage.getItem('lastID');
+    static getLastUserID() {
+        let retrievedObject = localStorage.getItem('lastID');
 
         if (retrievedObject === null) {
             localStorage.setItem("lastID", "0");
@@ -101,7 +100,7 @@ export class CustomAuthService{
     }
 
     incrementLastUserID(){
-        let currIDString = this.getLastUserID();
+        let currIDString = CustomAuthService.getLastUserID();
 
         if (currIDString === null) {
             localStorage.setItem("lastID", "0");
@@ -127,12 +126,12 @@ export class CustomAuthService{
         return user;
     }
 
-    setCurrentUser(id){
+    static setCurrentUser(id){
         localStorage.setItem("currentUser", id);
     }
 
-    getCurrentUser(){
-        var retrievedObject = localStorage.getItem("currentUser");
+    static getCurrentUser(){
+        let retrievedObject = localStorage.getItem("currentUser");
         return parseInt(retrievedObject);
     }
 }
