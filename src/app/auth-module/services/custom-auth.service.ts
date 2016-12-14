@@ -16,8 +16,17 @@ export class CustomAuthService{
     ) { }
 
     attemptLogin(email, password){
-
+        debugger;
         let iterations = this.getLastUserID();
+
+        //No registered users
+        if(iterations === 0){
+            this.notifyService.notify(<NotificationData> {
+                message: "Credentials not found",
+                type: NotificationTypes.DANGER
+            })
+        }
+
 
         for (var i = 0; i < iterations; i++) {
             let user = this.getUser(i);
