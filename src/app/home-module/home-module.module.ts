@@ -11,6 +11,8 @@ import {RevieveAccelDataService} from "./services/revieve-accel-data.service";
 import { CreditsComponent } from './credits/credits.component';
 import {homeRoutes} from "./home.routes";
 import {RouterModule} from "@angular/router";
+import { WinScreenComponent } from './game/win-screen/win-screen.component';
+import { LoseScreenComponent } from './game/lose-screen/lose-screen.component';
 
 @NgModule({
     imports: [
@@ -26,7 +28,9 @@ import {RouterModule} from "@angular/router";
         ScoresComponent,
         GameComponent,
         UsersComponent,
-        CreditsComponent
+        CreditsComponent,
+        WinScreenComponent,
+        LoseScreenComponent
     ],
     providers: [
         RevieveAccelDataService
