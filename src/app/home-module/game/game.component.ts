@@ -5,7 +5,6 @@ import set = Reflect.set;
 
 let $ = require('../../../../node_modules/jquery/dist/jquery.min.js');
 
-
 @Component({
     selector: 'app-game',
     templateUrl: './game.component.html',
@@ -67,38 +66,14 @@ export class GameComponent implements OnInit {
 
                     this.offSlide = true;
 
-                    let valToChangeSin:number = 0;
-                    let valToChangeCos:number = 0;
+                    this.boxX = $('.left-top').offset().left;
+                    this.boxY = $('.left-top').offset().top;
 
-                    //making sure values are treated as positives before sin/cos calculation
-                    if (this.calculatedRotation > 0) {
-                        valToChangeSin += Math.sin(this.calculatedRotation * Math.PI / 180.0) * 180;
-                    }
-                    else if(this.calculatedRotation < 0) {
-                        valToChangeSin -= Math.sin(this.calculatedRotation * Math.PI / 180.0) * 180;
-                    }
+                    $("#box").detach().appendTo("body");
 
-                    //when box leaves see saw at a high angle on the right hand side
-                    if(this.boxX > 400 && this.calculatedRotation<0){
-                        this.boxY -= valToChangeSin;
-
-                    }
-                    //when box leaves see saw at a high angle on the left hand side
-                    else if(this.boxX < -20 && this.calculatedRotation>0){
-                        this.boxY -= valToChangeSin;
-
-                    }
-                    //when box leaves see saw at a low angle on the right hand side
-                    else if(this.boxX > 400 && this.calculatedRotation>0){
-                        this.boxY += valToChangeSin;
-                        // this.boxX -= (window.outerWidth/2) - valToChangeCos;
-                    }
-                    //when box leaves see saw at a low angle on the left hand side
-                    else if(this.boxX < -20 && this.calculatedRotation<0){
-                        this.boxY += valToChangeSin;
-                        // this.boxX += (window.outerWidth/2) + valToChangeCos;
-                    }
+                    debugger;
                 }
+
 
                 this.parallelBall =false;
 
@@ -116,11 +91,12 @@ export class GameComponent implements OnInit {
                 }
                 this.boxY += this.speedY;
 
-                //lose if box goes below minwidth/2. Divided  by 2 since game element is centred
-                if (window.innerHeight/2 < (this.boxY)) {
-                    this.boxY = window.innerHeight/2;
+                if (window.innerHeight < (this.boxY - 20)) {
+                    this.boxY = window.innerHeight -20;
                     this.lose = true;
                 }
+
+                debugger;
             }
         }
     }
@@ -133,26 +109,14 @@ export class GameComponent implements OnInit {
         this.accelDataService.getData().subscribe(coords => {
 
 
-            let y = (coords.y - 10)/(-10-10) * (30+30) - 30;
+            this.calculatedRotation = (coords.y - 10)/(-10-10) * (30+30) - 30;
             //let z = (tempCoordinates.z - 10)/(-10-10) * (30+30) - 30;
 
             // this.calculatedRotation = (x+y+z)/3;
-            this.calculatedRotation = y;
         });
-
-        //Y = (X-A)/(B-A) * (D-C) + C;
-        //X falls between A and B and need to be mapped between B and C
-        //let x = (tempCoordinates.x - 10)/(-10-10) * (30+30) - 30;
-
-        //console.log("calculated rotation =" + this.calculatedRotation);
-        // console.log("X data:" + tempCoordinates.x);
-        // console.log("Y data:" + tempCoordinates.y);
-        // console.log("Z data:" + tempCoordinates.z);
     }
 
     checkBinCollision(){
-
-
         let basket = document.getElementById('sensor-area');
         let box = document.getElementById('box');
 
@@ -160,12 +124,9 @@ export class GameComponent implements OnInit {
         let basketCollisionObj = new CollidesWith(basket);
 
         setInterval(() =>{
-                let result = basketCollisionObj.isCollide(boxCollisionObj);
-
-                console.log(result);
+                this.win = basketCollisionObj.isCollide(boxCollisionObj);
             }
         );
-
     }
 
     //calculates next pos of basket
@@ -184,13 +145,10 @@ export class GameComponent implements OnInit {
             } else if (!this.moveRight) {
                 this.basketX--;
             }
-
-            debugger;
         },1);
     }
 
     getBasketLocation():string{
-        console.log(this.basketX);
         return this.basketX + 'px';
     }
 
@@ -223,14 +181,4 @@ export class GameComponent implements OnInit {
     getBoxLeft() : string{
         return this.boxX +'px';
     }
-
-    // getBoxRotationStyle() : string{
-    //     if(this.lose){
-    //
-    //         return 'rotate(' + -1*(this.calculatedRotation) + 'deg)';
-    //     }
-    //     else{
-    //         return null;
-    //     }
-    // }
 }

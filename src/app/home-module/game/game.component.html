@@ -3,16 +3,18 @@
 <div id="outerDiv">
     <div id="game" [style.transform]="getGameRotationStyle()">
         <div id="see-saw" [style.transform]="getSeeSawRotationalStyle()">
+
+        </div>
+        <div class="circle"></div>
+        <div id="box" [style.top] ="getBoxTop()" [style.left]="getBoxLeft()" >
             <div class="left-top" rel="yellow"></div>
             <div class="right-top" rel="red"></div>
             <div class="right-bottom" rel="blue"></div>
             <div class="left-bottom" rel="lime"></div>
         </div>
-        <div class="circle"></div>
-        <div id="box" [style.top] ="getBoxTop()" [style.left]="getBoxLeft()" >
-        </div>
     </div>
 
+    <!--<div id="basket">-->
     <div id="basket" [style.left]="getBasketLocation()">
         <img src="../../../assets/basket.png">
         <div id="sensor-area"></div>
