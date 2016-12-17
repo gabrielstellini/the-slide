@@ -38,8 +38,6 @@ export class NotificationComponent implements OnInit {
         this.isDanger = false;
         this.isSuccess = false;
 
-        debugger;
-
         if(messageType === 0){
             //info
             this.isInfo = true;

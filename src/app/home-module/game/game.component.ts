@@ -89,7 +89,6 @@ export class GameComponent implements OnInit {
 
                 this.accelX = Math.sin(this.calculatedRotation * Math.PI / 180.0);
                 this.accelX = this.accelX*((this.level*30+100)/100);
-                debugger;
                 this.speedX += this.accelX;
                 this.boxX += this.speedX;
             }

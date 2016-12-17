@@ -10,7 +10,6 @@ export class NotifyService {
 
     notify(notificationData: NotificationData){
         this.notificationComponent.showNotification(notificationData);
-
     }
 
     subscribe(component: NotificationComponent){

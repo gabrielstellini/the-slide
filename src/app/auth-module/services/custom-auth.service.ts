@@ -38,7 +38,6 @@ export class CustomAuthService{
 
                 } else {
                     this.login(user);
-                    // return("success", "Welcome back :)");
                     this.router.navigate(['/home']);
                     this.notifyService.notify(<NotificationData> {
                         message: "Welcome back :)",
@@ -65,7 +64,6 @@ export class CustomAuthService{
         ).subscribe();
 
     }
-
 
     register(username, email,password){
         this.saveUser(CustomAuthService.getLastUserID(),username,email,password);
@@ -128,10 +126,5 @@ export class CustomAuthService{
 
     static setCurrentUser(id){
         localStorage.setItem("currentUser", id);
-    }
-
-    static getCurrentUser(){
-        let retrievedObject = localStorage.getItem("currentUser");
-        return parseInt(retrievedObject);
     }
 }
