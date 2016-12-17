@@ -1,12 +1,12 @@
 <app-nav-bar></app-nav-bar>
 
-<div id="outerDiv">
+<div id="outerDiv" [hidden]="isGameHidden()">
     <div id="game" [style.transform]="getGameRotationStyle()">
         <div id="see-saw" [style.transform]="getSeeSawRotationalStyle()">
 
         </div>
         <div class="circle"></div>
-        <div id="box" [style.top] ="getBoxTop()" [style.left]="getBoxLeft()" >
+        <div id="box" [style.top] ="getBoxTop()" [style.left]="getBoxLeft()" [hidden]="isGameHidden()" >
             <div class="left-top" rel="yellow"></div>
             <div class="right-top" rel="red"></div>
             <div class="right-bottom" rel="blue"></div>
@@ -20,3 +20,7 @@
         <div id="sensor-area"></div>
     </div>
 </div>
+
+<!--<app-win-screen [hidden]="!hasWon()"></app-win-screen>-->
+<app-lose-screen [hidden]="!hasLost()"></app-lose-screen>
+<p [hidden]="!hasWon()">Level {{level}}</p>

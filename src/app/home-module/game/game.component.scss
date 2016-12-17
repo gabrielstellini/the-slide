@@ -84,3 +84,19 @@ top: 0;
   left: 0;
   bottom: 0;
 }
+
+p{
+  font-family: "Arial Black","Arial","Helvetica";
+  font-weight: 900;
+  font-size: 90px;
+  color: grey;
+  text-shadow: -2px 0px rgba(0, 0, 0, 0.75), 0 2px rgba(0, 0, 0, 0.75), 2px 0 rgba(0, 0, 0, 0.75), 0 -2px rgba(0, 0, 0, 0.75);
+  -webkit-font-smoothing: antialiased;
+  margin: 0px auto;
+
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
