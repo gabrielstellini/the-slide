@@ -8,7 +8,6 @@ import { GameComponent } from './game/game.component';
 import { UsersComponent } from './users/users.component';
 import {SharedModule} from "../shared/shared.module";
 import {RevieveAccelDataService} from "./services/revieve-accel-data.service";
-import { CreditsComponent } from './credits/credits.component';
 import {homeRoutes} from "./home.routes";
 import {RouterModule} from "@angular/router";
 import { WinScreenComponent } from './game/win-screen/win-screen.component';
@@ -28,7 +27,6 @@ import { LoseScreenComponent } from './game/lose-screen/lose-screen.component';
         ScoresComponent,
         GameComponent,
         UsersComponent,
-        CreditsComponent,
         WinScreenComponent,
         LoseScreenComponent
     ],
