@@ -23,7 +23,6 @@ export class RegisterFormComponent implements OnInit {
   }
 
   manualRegister(registerForm:any){
-    debugger;
     let userName = registerForm.value.username;
     let email = registerForm.value.email;
     let password=registerForm.value.password;
