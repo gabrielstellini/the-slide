@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row vertical-offset-100">
+    <div class="row vertical-offset-100 col-lg-offset-3 col-lg-6">
         <form #loginForm="ngForm" class="login-form">
 
             <div class="form-group image-div">
@@ -20,8 +20,6 @@
                 <div class="form-group login-btns">
                     <button class="form-control" [disabled]="!loginForm.valid" type="submit" (click)="manualLogin(loginForm)">Login</button>
                     <button routerLink="/register" class="form-control" type="button">Register</button>
-                    <button class="form-control btn-danger" formnovalidate (click)="googleLogin()">Login With Google</button>
-                    <button class="form-control btn-primary" formnovalidate (submit)="facebookLogin()">Login With Facebook</button>
                 </div>
             </div>
         </form>
