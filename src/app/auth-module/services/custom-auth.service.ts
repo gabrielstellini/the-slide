@@ -17,7 +17,7 @@ export class CustomAuthService{
 
     attemptLogin(email, password){
         let iterations = CustomAuthService.getLastUserID();
-
+        let foundUser:boolean = false;
         //No registered users
         if(iterations === 0){
             this.notifyService.notify(<NotificationData> {
@@ -30,6 +30,7 @@ export class CustomAuthService{
         for (let i = 0; i < iterations; i++) {
             let user = this.getUser(i);
             if (user.email === email) {
+                foundUser = true;
                 if (user.password !== password) {
                     this.notifyService.notify(<NotificationData> {
                         message: "Incorrect credentials",
@@ -37,32 +38,29 @@ export class CustomAuthService{
                     });
 
                 } else {
-                    this.login(user);
-                    this.router.navigate(['/home']);
                     this.notifyService.notify(<NotificationData> {
                         message: "Welcome back :)",
                         type: NotificationTypes.SUCCESS
-                    })
+                    });
+
+                    setTimeout(() => {
+                        this.login(user);
+                        this.router.navigate(['/home']);
+                    }, 2000);
                 }
-            } else {
-                this.notifyService.notify(<NotificationData> {
-                    message: "Credentials not found",
-                    type: NotificationTypes.DANGER
-                })
             }
+        }
+
+        if(!foundUser) {
+            this.notifyService.notify(<NotificationData> {
+                message: "Credentials not found",
+                type: NotificationTypes.DANGER
+            });
         }
     }
 
     login(user: User) {
         CustomAuthService.setCurrentUser(user.ID);
-
-        return this.http.post(environment.BASE_URL + 'game',
-            {
-                // userData : user
-                userData: JSON.stringify(user)
-            }
-        ).subscribe();
-
     }
 
     register(username, email,password){

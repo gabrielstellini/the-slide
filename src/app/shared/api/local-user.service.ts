@@ -80,8 +80,8 @@ export class LocalUserService {
         this.saveUser(user.ID,user.username,user.email,user.password,score);
     }
 
-    setCurrentUser(id){
-        localStorage.setItem("currentUser", id);
+    removeCurrentUser(){
+        localStorage.removeItem('currentUser');
     }
 
 

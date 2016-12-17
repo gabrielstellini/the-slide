@@ -33,10 +33,7 @@ export class GameComponent implements OnInit {
     private moveRight:boolean = false;
     private basketX:number = 80;
 
-
     intitializeData(level){
-
-
         $("#box").detach().appendTo("#game");
         this.boxX = 50;
         this.boxY = -20;
@@ -55,9 +52,6 @@ export class GameComponent implements OnInit {
 
         this.moveRight = false;
         this.basketX = 60;
-
-        // this.checkBinCollision();
-
     }
 
     constructor(private accelDataService : RevieveAccelDataService, private localStorageService:LocalUserService) {}
@@ -65,7 +59,6 @@ export class GameComponent implements OnInit {
 
 
     ngOnInit() {
-
         setInterval(() => {
             this.calculateRotation();
         }, 50);
@@ -176,7 +169,7 @@ export class GameComponent implements OnInit {
         let currUser = this.localStorageService.getUser(currUserId.toString());
 
         if(currUser.score<this.level){
-            this.localStorageService.saveUser(currUserId,currUser.username,currUser.email,currUser.password,this.level);
+            this.localStorageService.setScore(this.level);
         }
     }
 

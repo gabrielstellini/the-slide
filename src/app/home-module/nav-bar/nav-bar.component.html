@@ -1,17 +1,17 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">GameTime</a>
+      <div class="navbar-brand">GameTime</div>
     </div>
     <ul class="nav navbar-nav">
       <!--<li class="active"><a href="#">Home</a></li>-->
-      <li><a routerLink="/home">Home</a></li>
-      <li><a routerLink="/scores">Scores</a></li>
-      <li><a routerLink="/instructions">Instructions</a></li>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/scores">Scores</a></li>
+      <li><a href="/instructions">Instructions</a></li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-right">
-      <li><a routerLink="/login">Sign Out</a></li>
+    <ul class="nav navbar-nav navbar-right logout">
+      <li><a href="/login" (click)="logout()">Sign Out</a></li>
     </ul>
   </div>
 </nav>
