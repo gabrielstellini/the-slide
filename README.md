@@ -5,10 +5,13 @@ Welcome to my project! This is an angular 2 rc4 web game where the user needs to
 ## Installation
 
 1) Download the repo
+
 2) Install the node modules
 `npm install`
 `npm start`
+
 3) Install PHP and add the files to the htdocs
+
 4) Deploy the website and follow instructions on the instructions page
 
 ## Development server
